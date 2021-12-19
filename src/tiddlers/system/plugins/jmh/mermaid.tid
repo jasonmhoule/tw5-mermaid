@@ -1,0 +1,14 @@
+author: Jason Houle
+core-version: >=5.1.15
+created: 20211219211501983
+description: Edit and manage Mermaid.js tiddlers
+list: readme license history
+modified: 20211219211828826
+plugin-type: plugin
+source: https://github.com/jasonmhoule/tw5-mermaid
+tags: 
+title: $:/plugins/jmh/mermaid
+type: application/json
+version: 0.1
+
+{"tiddlers": {}}

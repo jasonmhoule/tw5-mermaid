@@ -1,0 +1,126 @@
+created: 20211219174100358
+creator: Tobias Beer
+modified: 20211219212823572
+modifier: Tobias Beer
+tags: 
+title: $:/plugins/jmh/mermaid/macros-internal
+type: text/vnd.tiddlywiki
+
+\define mermaid_image(tiddler)
+<div style="text-align:center">
+<$wikify name="base64" text='<<mermaid_encode "$tiddler$">>'>
+<$wikify name="imgout" text='{{{ [<base64>addprefix[<img src="https://mermaid.ink/img/]addsuffix[" />]]  || $:/plugins/jmh/mermaid/templates/text }}}'>
+<<imgout>>
+</$wikify>
+</$wikify>
+</div>
+\end
+
+\define mermaid_link()
+<$wikify name="base64" text='<<mermaid_encode $:/temp/mermaid>>'>
+<$wikify name="imgout" text='{{{ [<base64>addprefix[<a href="https://mermaid-js.github.io/mermaid-live-editor/edit/#]addsuffix[" target=_blank >Edit with Mermaid Live Editor</a>]]  || $:/plugins/jmh/mermaid/templates/text }}}'>
+<<imgout>>
+</$wikify>
+</$wikify>
+\end
+
+\define mermaid_encode(tiddler)
+<$wikify name="y" text='<<mermaid_wrap $tiddler$>>'>
+{{{ [mermaid:encode<y>] || $:/plugins/jmh/mermaid/templates/text }}}
+</$wikify>
+\end
+
+\define mermaid_wrap(tiddler)
+{"code":"{{{ [[$tiddler$]get[code]stringify[]]  || $:/plugins/jmh/mermaid/templates/text }}}","mermaid":{"theme":"{{{ [[$tiddler$]get[theme]]  || $:/plugins/jmh/mermaid/templates/text }}}","themeVariables": { {{{ [[$tiddler$]get[themeVariables]]  || $:/plugins/jmh/mermaid/templates/text }}} }},"autoSync":true}
+\end
+
+\define mermaid_editor_advanced_toggle()
+<div class="advancedDropdown">
+<$reveal type="nomatch" state="$:/temp/mermaid!!advanced" text="true">
+<$button set="$:/temp/mermaid!!advanced" setTo="true" class="tc-btn-invisible">
+{{$:/core/images/unfold-button}} ''Advanced''
+</$button>
+</$reveal>
+<$reveal type="match" state="$:/temp/mermaid!!advanced" text="true"><$button set="$:/temp/mermaid!!advanced" setTo="false" class="tc-btn-invisible">
+{{$:/core/images/fold-button}} ''Advanced''
+</$button><br>
+
+Theme Variables (<a href="https://mermaid-js.github.io/mermaid/#/theming">reference</a>)<br>
+
+<$edit-text tiddler="$:/temp/mermaid" field="themeVariables" tag="textarea" class="mermaidTextEdit" />
+<div style="font-size:smaller"><i>Enter a comma-separated list of value pairs inside the <code>'themeVariables'</code> curly braces, e.g., <code>"primaryColor": "#ff0000"</code>. Use <b>double-quotes</b> as in the live editor, not single quotes as in the reference docs.</i></div>
+<hr>
+
+Load base64 output from mermaid.live:<br>
+
+<$edit-text tiddler="$:/temp/mermaid" field="b64import" tag="textarea" class="mermaidTextEdit" placeholder="Enter mermaid.live reference to decode" /><br>
+
+<$set name="dcbutton" value=<<mermaid_decoder_button>> filter="[[$:/temp/mermaid]has[b64import]]" emptyValue="">
+<<dcbutton>>
+</$set>
+
+</$reveal>
+</div>
+\end
+
+\define mermaid_decoder_button()
+<$set name="vbutton" value=<<mermaid_valid_button>> filter="[mermaid:getcode{$:/temp/mermaid!!b64import}]" emptyValue="<span style='color:red'><i>No valid Mermaid.js base64 encoding detected</i>/<span>">
+<<vbutton>>
+</$set>
+\end
+
+\define mermaid_valid_button()
+<$button actions=<<mermaid_decode_and_load>>>Load</$button> <i>Note: this will overwrite all content in this editor.</i>
+\end
+
+\define mermaid_decode_and_load()
+<$action-setfield $tiddler="$:/temp/mermaid" code={{{ [mermaid:getcode{$:/temp/mermaid!!b64import}] || $:/plugins/jmh/mermaid/templates/text }}} nosync_code={{{ [mermaid:getcode{$:/temp/mermaid!!b64import}] || $:/plugins/jmh/mermaid/templates/text }}} theme={{{ [mermaid:gettheme{$:/temp/mermaid!!b64import}] || $:/plugins/jmh/mermaid/templates/text }}} themeVariables={{{ [mermaid:getthemevars{$:/temp/mermaid!!b64import}] || $:/plugins/jmh/mermaid/templates/text }}} />
+\end
+
+\define mermaid_codebox()
+<$reveal type="match" state="$:/temp/mermaid!!autosync" text="true">
+<$edit-text tiddler="$:/temp/mermaid" field="code" tag="textarea" class="mermaidTextEdit" />
+</$reveal>
+<$reveal type="nomatch" state="$:/temp/mermaid!!autosync" text="true">
+<$edit-text tiddler="$:/temp/mermaid" field="nosync_code" tag="textarea" class="mermaidTextEdit" />
+</$reveal>
+\end
+
+\define mermaid_set_autosync_on()
+<$action-setfield $tiddler="$:/temp/mermaid" $field="code" $value={{$:/temp/mermaid!!nosync_code}} />
+\end
+
+\define mermaid_set_autosync_off()
+<$action-setfield $tiddler="$:/temp/mermaid" $field="nosync_code" $value={{$:/temp/mermaid!!code}} />
+\end
+
+\define mermaid_editor_options()
+''Theme:'' 
+<$select tiddler="$:/temp/mermaid" field="theme" default='Default'>>
+<option value="base">Base</option>
+<option value="dark">Dark</option>
+<option value="default">Default</option>
+<option value="forest">Forest</option>
+<option value="neutral">Neutral</option>
+</$select> 
+''Auto sync:'' 
+<$reveal type="nomatch" state="$:/temp/mermaid!!autosync" text="true">
+<$checkbox tiddler="$:/temp/mermaid" field="autosync" checked="true" unchecked="false" actions=<<mermaid_set_autosync_on>> />
+<$button actions=<<mermaid_set_autosync_on>> >
+{{$:/core/images/refresh-button}}
+</$button>
+</$reveal>
+<$reveal type="match" state="$:/temp/mermaid!!autosync" text="true">
+<$checkbox tiddler="$:/temp/mermaid" field="autosync" checked="true" unchecked="false" actions=<<mermaid_set_autosync_off>> />
+</$reveal>
+\end
+
+\define mermaid_save()
+<$action-setfield $tiddler={{$:/temp/mermaid!!save_as}} code={{$:/temp/mermaid!!code}} theme={{$:/temp/mermaid!!theme}} themeVariables={{$:/temp/mermaid!!themeVariables}} text="<<mermaid_output>>" />
+<$action-navigate $to={{$:/temp/mermaid!!save_as}} />
+\end
+
+\define mermaid_load()
+<$action-setfield $tiddler="$:/temp/mermaid" code={{!!code}} nosync_code={{!!code}} theme={{!!theme}} themeVariables={{!!themeVariables}} advanced="false" autosync="false" save_as=<<currentTiddler>> />
+<$action-navigate $to="Mermaid Editor" />
+\end

@@ -1,0 +1,9 @@
+created: 20211219192748378
+creator: Tobias Beer
+modified: 20211219212823589
+modifier: Tobias Beer
+tags: 
+title: $:/plugins/jmh/mermaid/templates/text
+type: text/vnd.tiddlywiki
+
+<$text text=<<currentTiddler>>/>

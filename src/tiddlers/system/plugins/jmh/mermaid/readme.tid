@@ -1,0 +1,38 @@
+created: 20211219211827538
+list: license
+modified: 20211219212805758
+tags: 
+title: $:/plugins/jmh/mermaid/readme
+type: text/vnd.tiddlywiki
+
+* Notes
+** Motivation
+*** Markdown: easy code with nicely rendered display
+*** Make it easy to edit and maintain this info
+*** Tiddler is a simple display of the output (limitation: internet! more discussed later)
+*** Alternatives:
+**** mermaid.live - ok but cumbersome
+**** install into TW5 - large, not actively supported/convoluted install, a bit buggy
+** Suggested Workflow
+*** Tiddler stores all input: code, theme, themeVariables
+*** Editor is center of the workflow - new items/edits
+*** Create a tiddler and can transclude/etc.
+**** test_one - example (on the fly)
+**** [[New Tiddler 2]] - example of transclusion
+*** Click to load/open editor
+*** autosync toggle
+*** make reference to mermaid markdown, show some examples, not a deep dive
+**** markdown can be finnicky - see sequenceDiagram, themeVariables in flowchart vs User Journey... some of this is inherited. If you can generate a valid URL to import it should work...
+*** Edit on mermaid.live, load back into TW5
+** Installation
+*** (easy, off GitHub)
+** Advanced Topics
+*** Editor: uses $:/temp/mermaid
+*** Macros/structure
+*** base64 encoding
+*** Filter - debt to tobibeer: https://tobibeer.github.io/tw5-plugins/#base64
+** Limitations
+*** Requires internet - even to display. Possibly the biggest killer.
+*** Totally dependent on mermaid.live service for rendering images.
+*** Because it's .png, the interactivity doesn't work. Can't win 'em all.
+*** I have tried to be generic but limited to code/theme/vars to simplify complexity, so anything beyond that may not be supported. Open an issue!

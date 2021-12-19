@@ -1,0 +1,40 @@
+created: 20211219175354029
+creator: Tobias Beer
+modified: 20211219212823584
+modifier: Tobias Beer
+tags: $:/tags/Macro
+title: $:/plugins/jmh/mermaid/macros
+type: text/vnd.tiddlywiki
+
+\define mermaid_output()
+<$importvariables filter="[[$:/plugins/jmh/mermaid/macros-internal]]">
+<$button class="tc-btn-invisible" actions=<<mermaid_load>>>
+<$macrocall $name="mermaid_image" tiddler=<<currentTiddler>> />
+</$button>
+</$importvariables>
+\end
+
+\define mermaid_editor()
+<style>
+.mermaidTextEdit { width:100%; !important; }
+.advancedDropdown { background-color:<<colour tiddler-controls-foreground>>; padding:1em }
+</style>
+
+<$importvariables filter="[[$:/plugins/jmh/mermaid/macros-internal]]">
+
+<<mermaid_editor_options>>
+
+<<mermaid_codebox>>
+
+<<mermaid_link>>
+
+<<mermaid_editor_advanced_toggle>>
+
+Target Tiddler: <$edit-text tiddler="$:/temp/mermaid" field="save_as" tag="input" placeholder="Name of tiddler to save" /> <$button actions=<<mermaid_save>>>Save</$button>
+<$set name="test" filter="[[$:/temp/mermaid]get[save_as]is[tiddler]]" value="//Existing tiddler will be overwritten//" emptyValue="">
+<span style="color:red"><<test>></span>
+</$set>
+
+<<mermaid_image $:/temp/mermaid>>
+</$importvariables>
+\end
