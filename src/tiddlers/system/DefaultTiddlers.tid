@@ -1,6 +1,7 @@
 created: 20141001162503404
-modified: 20180217191020589
+modified: 20211220170539289
 title: $:/DefaultTiddlers
 type: text/vnd.tiddlywiki
 
-[[Plugin Kickstarter]]
+[[Mermaid Editor]]
+$:/plugins/jmh/mermaid
