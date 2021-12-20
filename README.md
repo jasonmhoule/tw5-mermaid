@@ -1,7 +1,7 @@
 Installation
 ------------
 
-Open the [hosted plugin site](https://jasonmhoule.github.io/tw5-mermaid/) alongside your wiki. On the sidebar under "Plugins," find this plugin ("Edit and manage Mermaid.js tiddlers") and drag-and-drop to your wiki.
+Open the [hosted plugin site](https://jasonmhoule.github.io/tw5-mermaid/) alongside your wiki. On the sidebar under "Plugins," find this plugin ("Edit and manage Mermaid.js tiddlers") and drag-and-drop to your wiki, then refresh for the plugin to work.
 
 Motivation
 ----------
