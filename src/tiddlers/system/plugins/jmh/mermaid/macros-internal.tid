@@ -1,6 +1,6 @@
 created: 20211219174100358
 creator: Tobias Beer
-modified: 20211219212823572
+modified: 20211221031927752
 modifier: Tobias Beer
 tags: 
 title: $:/plugins/jmh/mermaid/macros-internal
@@ -31,7 +31,7 @@ type: text/vnd.tiddlywiki
 \end
 
 \define mermaid_wrap(tiddler)
-{"code":"{{{ [[$tiddler$]get[code]stringify[]]  || $:/plugins/jmh/mermaid/templates/text }}}","mermaid":{"theme":"{{{ [[$tiddler$]get[theme]]  || $:/plugins/jmh/mermaid/templates/text }}}","themeVariables": { {{{ [[$tiddler$]get[themeVariables]]  || $:/plugins/jmh/mermaid/templates/text }}} }},"autoSync":true}
+{"code":"{{{ [[$tiddler$]get[code]stringify[]mermaid:removeapocode[]]  || $:/plugins/jmh/mermaid/templates/text }}}","mermaid":{"theme":"{{{ [[$tiddler$]get[theme]]  || $:/plugins/jmh/mermaid/templates/text }}}","themeVariables": { {{{ [[$tiddler$]get[themeVariables]]  || $:/plugins/jmh/mermaid/templates/text }}} }},"autoSync":true}
 \end
 
 \define mermaid_editor_advanced_toggle()

@@ -4,7 +4,7 @@ type: application/javascript
 title: $:/plugins/jmh/mermaid/filter.js
 tags: 
 modifier: Tobias Beer
-modified: 20211219212823557
+modified: 20211221033759974
 creator: Tobias Beer
 module-type: filteroperator
 
@@ -15,13 +15,18 @@ A filter to encode and decode base64
 (function () {
     "use strict";
     exports.mermaid = function (e, r, t) {
-        var n = r.operand.replace(/.*\/#/,"")
+        var n = r.operand.replace(/.*\/#/,"").replaceAll("_","/")
         try {var outstr = atob(n.replaceAll('-','+'));} catch(i) {var outstr= "" }
 
         try {
             switch(r.suffix) {
+              case "removeapocode":
+                n = "";
+                e(function(e,r){n+=r});
+                n = n.replaceAll("\\'","'");
+                break;
               case "encode":
-                n = btoa(n);
+                n = btoa(n).replaceAll("/","_");
                 break;
               case "getcode":
                 try {
