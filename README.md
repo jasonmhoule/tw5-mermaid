@@ -1,3 +1,5 @@
+See a demo video of this plugin on [YouTube](https://www.youtube.com/watch?v=e78RRDp-NZg).
+
 Installation
 ------------
 
