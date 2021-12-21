@@ -3,7 +3,7 @@ created: 20211217030345055
 type: application/javascript
 title: $:/plugins/jmh/mermaid/filter.js
 tags: 
-modified: 20211221113125870
+modified: 20211221121841137
 module-type: filteroperator
 
 A filter to encode and decode base64
@@ -13,8 +13,8 @@ A filter to encode and decode base64
 (function () {
     "use strict";
     exports.mermaid = function (e, r, t) {
-        var n = r.operand.replace(/.*\/#/,"").replaceAll("_","/")
-        try {var outstr = atob(n.replaceAll('-','+'));} catch(i) {var outstr= "" }
+        var n = r.operand;
+        try {var outstr = atob(n.replace(/.*\/#/,"").replaceAll("_","/").replaceAll('-','+'));} catch(i) {var outstr= "" }
 
         try {
             switch(r.suffix) {
@@ -42,10 +42,8 @@ A filter to encode and decode base64
                 break;
               case "getthemevars":
                 try {
-                    // need to update: remove first and last curly braces only
                     n = JSON.stringify(JSON.parse(JSON.parse(outstr).mermaid).themeVariables).substring(1).slice(0, -1);;
                 } catch (i) {
-                    // need to add a default value when this can't be recovered
                     return [""];
                 }
                 break;
