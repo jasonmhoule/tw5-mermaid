@@ -3,9 +3,7 @@ created: 20211217030345055
 type: application/javascript
 title: $:/plugins/jmh/mermaid/filter.js
 tags: 
-modifier: Tobias Beer
-modified: 20211221033759974
-creator: Tobias Beer
+modified: 20211221113125870
 module-type: filteroperator
 
 A filter to encode and decode base64
