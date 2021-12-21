@@ -1,14 +1,19 @@
 created: 20211219175354029
-modified: 20211221112957210
+modified: 20211221174333360
 tags: $:/tags/Macro
 title: $:/plugins/jmh/mermaid/macros
 type: text/vnd.tiddlywiki
 
 \define mermaid_output()
 <$importvariables filter="[[$:/plugins/jmh/mermaid/macros-internal]]">
-<$button class="tc-btn-invisible" actions=<<mermaid_load>>>
+<div style="text-align:center">
+<div style="width: fit-content;display:inline-block">
 <$macrocall $name="mermaid_image" tiddler=<<currentTiddler>> />
-</$button>
+<div style="text-align:right;font-size:smaller">
+<$button class="tc-btn-invisible tc-tiddlylink" actions=<<mermaid_load>>>Edit</$button>
+</div>
+</div>
+</div>
 </$importvariables>
 \end
 
@@ -33,6 +38,9 @@ Target Tiddler: <$edit-text tiddler="$:/temp/mermaid" field="save_as" tag="input
 <span style="color:red"><<test>></span>
 </$set>
 
+<div style="text-align:center">
+<div style="width: fit-content;display:inline-block">
 <<mermaid_image $:/temp/mermaid>>
+</div></div>
 </$importvariables>
 \end

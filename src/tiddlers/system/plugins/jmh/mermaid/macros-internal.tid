@@ -1,5 +1,5 @@
 created: 20211219174100358
-modified: 20211221113207682
+modified: 20211221174333354
 tags: 
 title: $:/plugins/jmh/mermaid/macros-internal
 type: text/vnd.tiddlywiki
@@ -7,7 +7,7 @@ type: text/vnd.tiddlywiki
 \define mermaid_image(tiddler)
 <div style="text-align:center">
 <$wikify name="base64" text='<<mermaid_encode "$tiddler$">>'>
-<$wikify name="imgout" text='{{{ [<base64>addprefix[<img src="https://mermaid.ink/img/]addsuffix[" />]]  || $:/plugins/jmh/mermaid/templates/text }}}'>
+<$wikify name="imgout" text='{{{ [<base64>addprefix[<object type="image/svg+xml" width="100%" data="https://mermaid.ink/svg/]addsuffix[" />]]  || $:/plugins/jmh/mermaid/templates/text }}}'>
 <<imgout>>
 </$wikify>
 </$wikify>

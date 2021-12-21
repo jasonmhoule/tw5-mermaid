@@ -21,7 +21,7 @@ One limitation of this implementation is that internet connection is required si
 Suggested Workflow
 ------------------
 
-The [Mermaid Editor](https://jasonmhoule.github.io/tw5-mermaid/#Mermaid%20Editor) tiddler is used to create and edit diagram tiddlers. These tiddlers contain the Mermaid syntax in fields and display the rendered result as an image; from here they may be transcluded as needed. The image also serves as a link to open the Editor to edit the diagram.
+The [Mermaid Editor](https://jasonmhoule.github.io/tw5-mermaid/#Mermaid%20Editor) tiddler is used to create and edit diagram tiddlers. These tiddlers contain the Mermaid syntax in fields and display the rendered result as an SVG; from here they may be transcluded as needed. The diagram display also include a link to open the Editor to edit the diagram.
 
 The [Mermaid Editor](https://jasonmhoule.github.io/tw5-mermaid/#Mermaid%20Editor) tiddler is thus the center of the workflow for creating or editing diagrams.
 
@@ -34,7 +34,6 @@ Limitations
 
 -   Requires internet to render diagram images, regardless of editing or viewing.
 -   This plugin wraps and is totally dependent on Mermaid Live service for rendering images. Mermaid Live Editor can itself be finnicky at times.
--   Rendered images are provided via `<img>` tags and thus diagram interactivity is not enabled.
 -   While the wrapper of Mermaid Live is fairly generic, it does not wrap the full Mermaid API but only `code`, `theme`, and `themeVariables` to simplify complexity; anything beyond that may not be supported. If you would like to see additional features, please [open an issue](https://github.com/jasonmhoule/tw5-mermaid/issues).
 
 Acknowledgements
