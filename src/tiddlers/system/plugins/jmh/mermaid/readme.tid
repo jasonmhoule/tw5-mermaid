@@ -1,12 +1,14 @@
 created: 20211219211827538
 list: license
-modified: 20211220204055694
+modified: 20211221112044991
 tags: 
 title: $:/plugins/jmh/mermaid/readme
 type: text/vnd.tiddlywiki
 
 !! Installation
-Open the [[hosted plugin site|https://jasonmhoule.github.io/tw5-mermaid/]] alongside your wiki. On the sidebar under "Plugins," find this plugin ("Edit and manage Mermaid.js tiddlers") and drag-and-drop to your wiki, then refresh for the plugin to work.
+Drag and drop this tiddler into your wiki, then refresh for the plugin to work:
+
+* $:/plugins/jmh/mermaid
 
 !! Motivation
 The idea of markdown is to allow a nicely rendered output from easy and self-descriptive syntax. [[Mermaid.js|https://mermaid-js.github.io/mermaid/#/]] extends this concept to a variety of diagrams. This plugin wraps the [[Mermaid Live Editor|https://mermaid.live/edit]] to make it easy to edit and maintain Mermaid code in your wiki while displaying the rendered output, all within a very lightweight implementation.
